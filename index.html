@@ -11,6 +11,9 @@
 </head>
 <body class="stage">
 
+<button class="mobile-menu" id="mobileMenu" aria-label="Сцены">☰</button>
+<div class="stage-backdrop" id="stageBackdrop"></div>
+
 <aside class="stage-side">
   <div class="stage-brand">
     <div class="stage-brand__mark">BK</div>
@@ -858,6 +861,20 @@ const obs = new MutationObserver(() => {
 obs.observe(document.body, { subtree: true, attributes: true, attributeFilter: ['class'] });
 
 goTo('splash', false);
+
+// ---------- Mobile drawer menu ----------
+const menuBtn = document.getElementById('mobileMenu');
+const side = document.querySelector('.stage-side');
+const backdrop = document.getElementById('stageBackdrop');
+function toggleMenu(open){
+  side.classList.toggle('side--open', open);
+  backdrop.classList.toggle('side--open', open);
+}
+menuBtn.addEventListener('click', () => toggleMenu(!side.classList.contains('side--open')));
+backdrop.addEventListener('click', () => toggleMenu(false));
+document.querySelectorAll('.stage-nav button').forEach(b => {
+  b.addEventListener('click', () => toggleMenu(false));
+});
 </script>
 </body>
 </html>

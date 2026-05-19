@@ -1135,8 +1135,12 @@ body{
 .bk-badge--rare{ background: rgba(36,83,168,.18); color: #2453a8; }
 .bk-badge--epic{ background: rgba(140,43,176,.18); color: #8c2bb0; }
 
+/* ==================== MOBILE MENU CONTROLS ==================== */
+.mobile-menu{ display: none; }
+.stage-backdrop{ display: none; }
+
 /* ==================== RESPONSIVE ==================== */
-@media (max-width: 900px){
+@media (max-width: 900px) and (min-width: 761px){
   .stage{ grid-template-columns: 1fr; }
   .stage-side{
     position: static; height: auto;
@@ -1145,8 +1149,139 @@ body{
   .stage-main{ padding: 20px; }
   .phone{ width: 360px; height: 780px; }
 }
+
+@media (max-width: 760px){
+  /* Stage becomes single-column, sidebar becomes hidden drawer */
+  .stage{ display: block; }
+  .stage-main{
+    padding: 0;
+    background:
+      repeating-linear-gradient(0deg, rgba(58,32,12,.05) 0 1px, transparent 1px 3px),
+      radial-gradient(1200px 500px at 50% 0%, #efd7a8, #ddc4a0 50%, #c9ad84 100%);
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  /* Phone becomes the entire viewport — no fake bezel/notch/home-bar */
+  .phone{
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    border-radius: 0;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+  .notch, .home-bar{ display: none; }
+  .phone-foot{ display: none; }
+  .screen{
+    inset: 0;
+    border-radius: 0;
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+
+  /* Hide fake iOS chrome — real device has its own */
+  .status-bar{ display: none; }
+  .browser-bar{ display: none; }
+
+  /* Make tabs respect home indicator area */
+  .bk-tabs{
+    left: 0; right: 0; bottom: 0;
+    border-radius: 0;
+    padding-bottom: max(env(safe-area-inset-bottom, 6px), 6px);
+    height: auto;
+    min-height: 56px;
+  }
+
+  /* Adjust frame padding for tabs */
+  .bk-frame{ padding-bottom: 80px; }
+  .bk-frame::after{
+    left: 0; right: 0; top: 0; bottom: 64px;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+  }
+
+  /* Hamburger menu button — top-right, floating */
+  .mobile-menu{
+    display: flex;
+    position: fixed;
+    top: calc(env(safe-area-inset-top, 8px) + 8px);
+    right: 12px;
+    z-index: 200;
+    width: 44px; height: 44px;
+    align-items: center; justify-content: center;
+    background: rgba(42,28,12,.92);
+    color: #f4dca8;
+    border: 1px solid rgba(184,134,47,.42);
+    border-radius: 12px;
+    font-size: 22px;
+    box-shadow: 0 4px 14px rgba(0,0,0,.45);
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+  }
+  .mobile-menu:active{ transform: scale(.95); }
+
+  /* Sidebar as slide-in drawer */
+  .stage-side{
+    position: fixed;
+    inset: 0;
+    width: 86%;
+    max-width: 340px;
+    height: 100vh;
+    height: 100dvh;
+    z-index: 210;
+    transform: translateX(-100%);
+    transition: transform .25s ease;
+    overflow-y: auto;
+    padding-top: calc(env(safe-area-inset-top, 14px) + 14px);
+    padding-bottom: calc(env(safe-area-inset-bottom, 14px) + 14px);
+  }
+  .stage-side.side--open{ transform: translateX(0); }
+
+  /* Backdrop */
+  .stage-backdrop{
+    display: block;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,.55);
+    z-index: 205;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s;
+    backdrop-filter: blur(2px);
+  }
+  .stage-backdrop.side--open{ opacity: 1; pointer-events: auto; }
+
+  /* Modal full-width with safe area */
+  .modal{
+    top: max(env(safe-area-inset-top, 14px) + 60px, 70px);
+    left: 12px; right: 12px;
+  }
+
+  /* Leave room for hamburger button (top-right) */
+  .square-head{ padding-right: 64px; }
+  .combat-bar{ padding-right: 60px; }
+  .modal-head{ padding-right: 60px; }
+
+  /* Larger touch targets where needed */
+  .bk-back{ width: 40px; height: 40px; font-size: 20px; }
+  .log-tab{ padding: 8px 16px; font-size: 13px; }
+  .bk-tab{ font-size: 12px; padding: 4px 14px; }
+  .bk-tab__ic{ font-size: 20px; }
+
+  /* Splash: ensure CTA in safe area */
+  .splash-content{ padding-bottom: env(safe-area-inset-bottom, 0px); }
+  .splash-live{ bottom: max(env(safe-area-inset-bottom, 30px), 30px); }
+}
+
 @media (max-width: 420px){
-  .phone{ width: 100%; height: calc(100vh - 80px); border-radius: 38px; padding: 4px; }
-  .screen{ border-radius: 34px; inset: 4px; }
-  .notch{ width: 100px; height: 24px; top: 10px; }
+  /* Tighter spacings on small phones */
+  .combat-bar__title{ font-size: 18px; }
+  .stamp{ font-size: 22px; padding: 6px 22px; }
+  .ability__n{ font-size: 9px; }
+  .ability__c{ font-size: 8px; }
+  .scroll__c{ font-size: 10px; }
+  .stat-pill{ font-size: 9px; padding: 5px 0; }
+  .stat-pill b{ font-size: 11px; }
+  .fc-art{ height: 150px; }
 }
