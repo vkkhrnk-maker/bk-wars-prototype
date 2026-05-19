@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 380" preserveAspectRatio="xMidYMax meet">
+  <defs>
+    <radialGradient id="bgK" cx="50%" cy="22%" r="70%">
+      <stop offset="0%" stop-color="#a89478"/>
+      <stop offset="55%" stop-color="#5a3f24"/>
+      <stop offset="100%" stop-color="#2a1808"/>
+    </radialGradient>
+    <linearGradient id="armorK" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#bdb5a6"/>
+      <stop offset="50%" stop-color="#5e5448"/>
+      <stop offset="100%" stop-color="#241d14"/>
+    </linearGradient>
+    <linearGradient id="armorDark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#675a4c"/>
+      <stop offset="100%" stop-color="#1c1409"/>
+    </linearGradient>
+    <linearGradient id="capeK" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9a1f24"/>
+      <stop offset="100%" stop-color="#3a0a0e"/>
+    </linearGradient>
+    <linearGradient id="shieldK" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3a2f24"/>
+      <stop offset="100%" stop-color="#120a04"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f4d878"/>
+      <stop offset="60%" stop-color="#b88018"/>
+      <stop offset="100%" stop-color="#5a3a0a"/>
+    </radialGradient>
+    <filter id="grain" x="0" y="0">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/>
+      <feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.18 0"/>
+      <feComposite in2="SourceGraphic" operator="in"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="280" height="380" fill="url(#bgK)"/>
+  <!-- Atmosphere fog -->
+  <ellipse cx="140" cy="300" rx="140" ry="40" fill="#1a0e04" opacity="0.6"/>
+
+  <!-- Cape behind -->
+  <path d="M 80 130 Q 60 240 70 360 L 100 360 Q 90 240 110 150 Z" fill="url(#capeK)"/>
+  <path d="M 200 130 Q 220 240 210 360 L 180 360 Q 190 240 170 150 Z" fill="url(#capeK)"/>
+
+  <!-- Sword tip -->
+  <rect x="138" y="280" width="4" height="80" fill="#c8c0b0"/>
+  <polygon points="135,278 145,278 140,265" fill="#a89478"/>
+
+  <!-- Legs -->
+  <path d="M 110 240 L 105 360 L 130 360 L 135 245 Z" fill="url(#armorK)"/>
+  <path d="M 145 245 L 150 360 L 175 360 L 170 240 Z" fill="url(#armorK)"/>
+  <!-- Boots -->
+  <rect x="100" y="345" width="35" height="20" rx="3" fill="#1a1208"/>
+  <rect x="145" y="345" width="35" height="20" rx="3" fill="#1a1208"/>
+
+  <!-- Tabard / surcoat dark -->
+  <path d="M 100 180 L 100 270 Q 140 280 180 270 L 180 180 Z" fill="url(#armorDark)"/>
+  <!-- Belt -->
+  <rect x="98" y="262" width="84" height="10" fill="#4a2810"/>
+  <rect x="135" y="262" width="10" height="10" fill="#b8801a"/>
+
+  <!-- Torso armor (breastplate) -->
+  <path d="M 95 130 Q 90 155 95 200 L 100 220 Q 140 230 180 220 L 185 200 Q 190 155 185 130 Q 165 115 140 115 Q 115 115 95 130 Z" fill="url(#armorK)"/>
+  <!-- Sun emblem on chest -->
+  <circle cx="140" cy="175" r="14" fill="url(#sun)"/>
+  <g fill="#b88018">
+    <polygon points="140,150 144,168 136,168"/>
+    <polygon points="140,200 144,182 136,182"/>
+    <polygon points="115,175 133,179 133,171"/>
+    <polygon points="165,175 147,179 147,171"/>
+  </g>
+
+  <!-- Pauldrons -->
+  <ellipse cx="90" cy="140" rx="22" ry="18" fill="url(#armorK)"/>
+  <ellipse cx="190" cy="140" rx="22" ry="18" fill="url(#armorK)"/>
+  <ellipse cx="90" cy="140" rx="14" ry="10" fill="url(#armorDark)"/>
+  <ellipse cx="190" cy="140" rx="14" ry="10" fill="url(#armorDark)"/>
+
+  <!-- Arms -->
+  <path d="M 75 155 Q 65 200 80 240 L 95 240 Q 105 200 100 160 Z" fill="url(#armorK)"/>
+  <path d="M 205 155 Q 215 200 200 240 L 185 240 Q 175 200 180 160 Z" fill="url(#armorK)"/>
+  <!-- Gauntlets -->
+  <ellipse cx="87" cy="245" rx="16" ry="10" fill="url(#armorDark)"/>
+  <ellipse cx="193" cy="245" rx="16" ry="10" fill="url(#armorDark)"/>
+
+  <!-- Sword in hand -->
+  <rect x="135" y="245" width="10" height="18" fill="#3a2410"/>
+  <path d="M 120 268 L 160 268 L 158 273 L 122 273 Z" fill="#b8801a"/>
+  <rect x="138" y="252" width="4" height="32" fill="#c8c0b0"/>
+
+  <!-- Shield (held in left arm in front of body) -->
+  <path d="M 50 175 Q 50 240 80 270 Q 110 240 110 175 Q 80 165 50 175 Z" fill="url(#shieldK)" stroke="#2a1808" stroke-width="2"/>
+  <path d="M 55 178 Q 55 235 80 263 Q 105 235 105 178 Q 80 170 55 178 Z" fill="none" stroke="#a07a40" stroke-width="1.2"/>
+  <circle cx="80" cy="215" r="14" fill="url(#sun)"/>
+  <g fill="#7a5018">
+    <polygon points="80,194 84,210 76,210"/>
+    <polygon points="80,236 84,222 76,222"/>
+    <polygon points="59,215 75,219 75,211"/>
+    <polygon points="101,215 85,219 85,211"/>
+  </g>
+
+  <!-- Head with closed helmet -->
+  <ellipse cx="140" cy="90" rx="28" ry="34" fill="url(#armorK)"/>
+  <!-- Visor slit -->
+  <rect x="120" y="85" width="40" height="4" fill="#0a0500"/>
+  <!-- Cross strut -->
+  <rect x="138" y="70" width="4" height="38" fill="#2a1c10"/>
+  <!-- Plume holder -->
+  <rect x="135" y="55" width="10" height="12" fill="url(#armorDark)"/>
+  <!-- Red plume -->
+  <path d="M 140 56 Q 130 42 132 22 Q 140 30 140 56 Z" fill="#9a1f24"/>
+  <path d="M 140 56 Q 150 42 148 22 Q 140 30 140 56 Z" fill="#6a121a"/>
+
+  <!-- Neck shadow -->
+  <rect x="128" y="118" width="24" height="10" fill="#1a1208"/>
+
+  <!-- Grain overlay (subtle) -->
+  <rect width="280" height="380" fill="#000" opacity="0.0"/>
+</svg>

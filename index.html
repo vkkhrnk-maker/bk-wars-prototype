@@ -1,0 +1,863 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="theme-color" content="#1a0f06" />
+<title>BK Wars — кликабельный прототип</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body class="stage">
+
+<aside class="stage-side">
+  <div class="stage-brand">
+    <div class="stage-brand__mark">BK</div>
+    <div>
+      <div class="stage-brand__t">BK Wars</div>
+      <div class="stage-brand__s">Кликабельный прототип</div>
+    </div>
+  </div>
+
+  <div class="stage-section">
+    <div class="stage-section__t">Сцены</div>
+    <ul class="stage-nav">
+      <li><button data-go="splash">1. Заставка</button></li>
+      <li><button data-go="ploschad">2. Центральная площадь</button></li>
+      <li><button data-go="combat-turn">3. Бой · Ваш ход</button></li>
+      <li><button data-go="combat-wait">4. Бой · Ожидание</button></li>
+      <li><button data-go="combat-modal">5. Бой · Карточка соперника</button></li>
+      <li><button data-go="anketa">6. Анкета персонажа</button></li>
+      <li><button data-go="combat-chat">7. Бой · Чат</button></li>
+      <li><button data-go="victory">8. Победа</button></li>
+      <li><button data-go="defeat">9. Поражение</button></li>
+      <li><button data-go="inventory">10. Инвентарь</button></li>
+      <li><button data-go="elixirs">11. Эликсиры</button></li>
+    </ul>
+  </div>
+
+  <div class="stage-section">
+    <div class="stage-section__t">Подсказки</div>
+    <ul class="stage-hints">
+      <li>Тапай по красной кнопке «Удар» — отправит ход</li>
+      <li>Тапай по имени соперника или (i) — откроет карточку</li>
+      <li>«Осмотреть анкету» в карточке — полная страница персонажа</li>
+      <li>Зоны Удар/Блок переключаются тапом</li>
+    </ul>
+  </div>
+
+  <div class="stage-foot">
+    bk.softmg.tech · мобильная PvP MMORPG в духе классического БК
+  </div>
+</aside>
+
+<main class="stage-main">
+
+  <div class="phone">
+    <div class="notch"></div>
+
+    <!-- ============================== SCENE: SPLASH ============================== -->
+    <section class="screen scene scene--active" data-scene="splash">
+      <div class="status-bar status-bar--dark"><span>9:41</span><span class="sb-i">●●● ▮▮▮ 100%</span></div>
+
+      <div class="splash-art"></div>
+      <div class="splash-content">
+        <div class="brand-stamp">
+          <div class="brand-stamp__bk">BK</div>
+          <div class="brand-stamp__wars">WARS</div>
+        </div>
+        <div class="splash-tag">Возрождение легендарной<br/>PvP MMORPG в духе<br/>Бойцовского Клуба</div>
+        <div class="splash-cta">
+          <button class="btn btn--red btn--lg" data-go="ploschad">Войти в игру</button>
+          <button class="btn btn--ghost-light">Создать персонажа</button>
+        </div>
+        <div class="splash-live">
+          <span class="live-dot"></span>
+          Сейчас в игре <b>2 481</b> · Кланов: <b>184</b>
+        </div>
+      </div>
+
+      <div class="home-bar"></div>
+    </section>
+
+    <!-- ============================== SCENE: ПЛОЩАДЬ ============================== -->
+    <section class="screen scene" data-scene="ploschad">
+      <div class="status-bar"><span>9:41</span><span class="sb-i">●●● ▮▮▮ 100%</span></div>
+      <div class="browser-bar">
+        <span class="bb-l">AA</span>
+        <span class="bb-c">🔒 bk.softmg.tech</span>
+        <span class="bb-r">↻</span>
+      </div>
+
+      <div class="bk-frame">
+        <div class="square-head">
+          <div class="sq-avatar"><div class="sq-avatar__inner">🐺</div></div>
+          <div class="sq-name">Дядя&nbsp;Миша <span class="sq-lvl">[11]</span></div>
+          <div class="sq-time">
+            <div class="sq-time__v">18:59:32</div>
+            <div class="sq-time__s">до перезарядки</div>
+          </div>
+        </div>
+
+        <div class="bk-divider">⊰<span> Центральная площадь </span>⊱</div>
+
+        <div class="ploschad-art">
+          <img class="pl-bg" src="assets/square.svg" alt="Центральная площадь"/>
+          <button class="btn btn--red btn--attack" data-go="combat-turn">⚔ Напасть</button>
+        </div>
+
+        <div class="bk-section">
+          <div class="bk-section__t">Доступные для нападения</div>
+          <ul class="enemy-list">
+            <li data-go="combat-turn">
+              <span class="el-mark">⚜</span>
+              <span class="el-n">MAG_of_DARKNESS</span>
+              <span class="el-lvl">[12]</span>
+              <span class="el-chev">›</span>
+            </li>
+            <li data-go="combat-turn">
+              <span class="el-mark">🌙</span>
+              <span class="el-n">breez</span>
+              <span class="el-lvl">[10]</span>
+              <span class="el-chev">›</span>
+            </li>
+            <li data-go="combat-turn">
+              <span class="el-mark">⚡</span>
+              <span class="el-n">Варвар_82</span>
+              <span class="el-lvl">[11]</span>
+              <span class="el-chev">›</span>
+            </li>
+            <li data-go="combat-turn" class="el--highlight">
+              <span class="el-mark">☀</span>
+              <span class="el-n">Аргус</span>
+              <span class="el-lvl">[12]</span>
+              <span class="el-chev">›</span>
+            </li>
+            <li data-go="combat-turn">
+              <span class="el-mark">🔱</span>
+              <span class="el-n">Кузнец_Гром</span>
+              <span class="el-lvl">[13]</span>
+              <span class="el-chev">›</span>
+            </li>
+            <li data-go="combat-turn">
+              <span class="el-mark">⚔︎</span>
+              <span class="el-n">ОрхуВойн</span>
+              <span class="el-lvl">[11]</span>
+              <span class="el-chev">›</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bk-section">
+          <div class="bk-section__t">Переходы</div>
+          <div class="bk-chips">
+            <button class="bk-chip">Таверна</button>
+            <button class="bk-chip">Магазин</button>
+            <button class="bk-chip bk-chip--on">Площадь</button>
+            <button class="bk-chip">Кузница</button>
+            <button class="bk-chip">Доска</button>
+          </div>
+        </div>
+      </div>
+
+      <nav class="bk-tabs">
+        <div class="bk-tab"><div class="bk-tab__ic">💬</div><div>Чат</div></div>
+        <div class="bk-tab bk-tab--on"><div class="bk-tab__ic">⚔</div><div>Поединки</div></div>
+        <div class="bk-tab"><div class="bk-tab__ic">☰</div><div>Меню</div></div>
+      </nav>
+      <div class="home-bar"></div>
+    </section>
+
+    <!-- ============================== SCENE: COMBAT — ВАШ ХОД ============================== -->
+    <section class="screen scene" data-scene="combat-turn">
+      <div class="status-bar"><span>9:41</span><span class="sb-i">●●● ▮▮▮ 100%</span></div>
+      <div class="browser-bar"><span class="bb-l">AA</span><span class="bb-c">🔒 bk.softmg.tech</span><span class="bb-r">↻</span></div>
+
+      <div class="bk-frame">
+        <div class="combat-bar">
+          <button class="bk-back" data-go="ploschad">‹</button>
+          <div class="combat-bar__t">
+            <div class="combat-bar__title">⊰ Бой ⊱</div>
+            <div class="combat-bar__sub">МСК 18:59</div>
+          </div>
+          <button class="bk-back" style="visibility:hidden">‹</button>
+        </div>
+
+        <div class="combat-vs">
+          <div class="cvs-side" data-go="combat-modal">
+            <div class="cvs-row">
+              <span class="cvs-name">solrim</span>
+              <span class="cvs-info">ⓘ</span>
+              <span class="cvs-lvl">Lv.&nbsp;11</span>
+            </div>
+            <div class="cvs-bar"><div class="cvs-bar__hp" style="width:100%"><b>980 / 980</b></div></div>
+            <div class="cvs-bar"><div class="cvs-bar__mp" style="width:100%"><b>120 / 120</b></div></div>
+          </div>
+          <div class="cvs-vs">VS</div>
+          <div class="cvs-side cvs-side--r" data-go="combat-modal">
+            <div class="cvs-row">
+              <span class="cvs-lvl">Lv.&nbsp;12</span>
+              <span class="cvs-info">ⓘ</span>
+              <span class="cvs-name">Аргус</span>
+            </div>
+            <div class="cvs-bar"><div class="cvs-bar__hp" style="width:100%"><b>1150 / 1150</b></div></div>
+            <div class="cvs-bar"><div class="cvs-bar__mp" style="width:100%"><b>140 / 140</b></div></div>
+          </div>
+        </div>
+
+        <div class="fighters">
+          <div class="gear-col gear-col--l">
+            <div class="gear-slot gear-slot--w"><span>🗡</span></div>
+            <div class="gear-slot gear-slot--w"><span>⚒</span></div>
+            <div class="gear-slot gear-slot--w"><span>🛡</span></div>
+            <div class="gear-slot gear-slot--w"><span>👢</span></div>
+          </div>
+          <div class="fighter-card fighter-card--l">
+            <div class="fc-art fc-art--woman"><img src="assets/warrior.svg" alt="solrim"/></div>
+            <div class="fc-status">
+              <span class="fc-stat" title="Защита">🛡 <b>3</b></span>
+              <span class="fc-stat" title="Скорость">🪶 <b>2</b></span>
+              <span class="fc-stat" title="Эффект">⌛ <b>5</b></span>
+            </div>
+          </div>
+          <div class="fighter-card fighter-card--r">
+            <div class="fc-art fc-art--knight"><img src="assets/knight.svg" alt="Аргус"/></div>
+          </div>
+          <div class="gear-col gear-col--r">
+            <div class="gear-slot gear-slot--a"><span>🦺</span></div>
+            <div class="gear-slot gear-slot--a"><span>🧥</span></div>
+            <div class="gear-slot gear-slot--a"><span>🪖</span></div>
+            <div class="gear-slot gear-slot--a"><span>👢</span></div>
+          </div>
+        </div>
+
+        <div class="combat-state combat-state--turn">Ваш ход · 12 секунд</div>
+
+        <div class="zone-pad">
+          <div class="zone-pad__title">Удар</div>
+          <div class="zone-row">
+            <button class="zone-btn js-zone-attack" data-zone="head"><div class="zone-btn__ic">⌒</div><div class="zone-btn__n">Голова</div></button>
+            <button class="zone-btn js-zone-attack zone-btn--on" data-zone="body"><div class="zone-btn__ic">▮</div><div class="zone-btn__n">Корпус</div></button>
+            <button class="zone-btn js-zone-attack" data-zone="legs"><div class="zone-btn__ic">⫯</div><div class="zone-btn__n">Ноги</div></button>
+          </div>
+          <div class="zone-pad__title">Блок</div>
+          <div class="zone-row">
+            <button class="zone-btn js-zone-block" data-zone="head"><div class="zone-btn__ic">⌒</div><div class="zone-btn__n">Голова</div></button>
+            <button class="zone-btn js-zone-block" data-zone="body"><div class="zone-btn__ic">▮</div><div class="zone-btn__n">Корпус</div></button>
+            <button class="zone-btn js-zone-block zone-btn--on" data-zone="legs"><div class="zone-btn__ic">⫯</div><div class="zone-btn__n">Ноги</div></button>
+          </div>
+        </div>
+
+        <button class="btn btn--red btn--block js-attack" data-go="combat-wait">⚔ Удар</button>
+
+        <div class="scrolls">
+          <div class="scroll"><div class="scroll__ic">❄</div><div class="scroll__c">5/30</div></div>
+          <div class="scroll"><div class="scroll__ic">🍃</div><div class="scroll__c">4/30</div></div>
+          <div class="scroll"><div class="scroll__ic">🔥</div><div class="scroll__c">2/10</div></div>
+          <div class="scroll"><div class="scroll__ic">☁</div><div class="scroll__c">3/10</div></div>
+          <div class="scroll"><div class="scroll__ic">⚡</div><div class="scroll__c">1/8</div></div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-pill"><span>⚔</span><b>12</b></div>
+          <div class="stat-pill"><span>🛡</span><b>15</b></div>
+          <div class="stat-pill"><span>💧</span><b>7</b></div>
+          <div class="stat-pill"><span>🪶</span><b>9</b></div>
+          <div class="stat-pill"><span>❤</span><b>6</b></div>
+          <div class="stat-pill"><span>👁</span><b>4</b></div>
+          <div class="stat-pill"><span>⌛</span><b>3</b></div>
+        </div>
+
+        <div class="ability-row">
+          <button class="ability"><div class="ability__ic">🎯</div><div class="ability__n">Разведка</div><div class="ability__c">2/3</div></button>
+          <button class="ability"><div class="ability__ic">⚔</div><div class="ability__n">Тёмный<br/>удар</div><div class="ability__c">1/3</div></button>
+          <button class="ability"><div class="ability__ic">💪</div><div class="ability__n">Силовой<br/>приём</div><div class="ability__c">2/3</div></button>
+          <button class="ability"><div class="ability__ic">🛡</div><div class="ability__n">Защитная<br/>стойка</div><div class="ability__c">1/3</div></button>
+          <button class="ability"><div class="ability__ic">⚔</div><div class="ability__n">Ответный<br/>удар</div><div class="ability__c">3/3</div></button>
+        </div>
+
+        <div class="log-tabs">
+          <button class="log-tab log-tab--on">Лог боя</button>
+          <button class="log-tab" data-go="combat-chat">Чат</button>
+        </div>
+
+        <div class="log-body">
+          <div class="log-line"><span class="lt">18:59</span><span><b class="me">solrim</b> использовал <b>Тёмный удар</b>.</span></div>
+          <div class="log-line"><span class="lt">18:59</span><span><b class="foe">Аргус</b> получил <b class="dmg">142</b> урона.</span></div>
+          <div class="log-line"><span class="lt">18:59</span><span><b class="foe">Аргус</b> использовал <b>Силовой приём</b>.</span></div>
+          <div class="log-line"><span class="lt">18:59</span><span><b class="me">solrim</b> заблокировал <b>68</b> урона.</span></div>
+          <div class="log-line"><span class="lt">18:59</span><span><b class="foe">Аргус</b> получил эффект <b class="dmg">Кровотечение</b> (7 урона в течение 3 ходов).</span></div>
+          <div class="log-line"><span class="lt">18:58</span><span><b class="foe">Аргус</b> использовал <b>Удар</b>.</span></div>
+          <div class="log-line"><span class="lt">18:58</span><span><b class="me">solrim</b> получил <b class="dmg">88</b> урона.</span></div>
+          <div class="log-line"><span class="lt">18:58</span><span><b class="me">solrim</b> использовал <b>Защитная стойка</b>.</span></div>
+          <div class="log-line"><span class="lt">18:58</span><span><b class="me">solrim</b> получил эффект <b class="dmg">Защита</b> (+35% к защите на 2 хода).</span></div>
+          <div class="log-line"><span class="lt">18:57</span><span><b class="foe">Аргус</b> использовал <b>Ответный удар</b>.</span></div>
+          <div class="log-line"><span class="lt">18:57</span><span><b class="me">solrim</b> блокировал <b>42</b> урона.</span></div>
+          <div class="log-line"><span class="lt">18:57</span><span><b class="me">solrim</b> использовал <b>Силовой приём</b>.</span></div>
+          <div class="log-line"><span class="lt">18:57</span><span><b class="foe">Аргус</b> получил <b class="dmg">188</b> урона.</span></div>
+          <div class="log-line"><span class="lt">18:57</span><span><b class="foe">Аргус</b> получил эффект <b class="dmg">Оглушение</b> (пропуск следующего хода).</span></div>
+          <div class="log-line"><span class="lt">18:56</span><span>Бой начался!</span></div>
+        </div>
+      </div>
+
+      <div class="home-bar"></div>
+    </section>
+
+    <!-- ============================== SCENE: COMBAT — ОЖИДАНИЕ ============================== -->
+    <section class="screen scene" data-scene="combat-wait">
+      <div class="status-bar"><span>9:41</span><span class="sb-i">●●● ▮▮▮ 100%</span></div>
+      <div class="browser-bar"><span class="bb-l">AA</span><span class="bb-c">🔒 bk.softmg.tech</span><span class="bb-r">↻</span></div>
+
+      <div class="bk-frame">
+        <div class="combat-bar">
+          <button class="bk-back" data-go="ploschad">‹</button>
+          <div class="combat-bar__t">
+            <div class="combat-bar__title">⊰ Бой ⊱</div>
+            <div class="combat-bar__sub">МСК 18:59</div>
+          </div>
+          <button class="bk-back" style="visibility:hidden">‹</button>
+        </div>
+
+        <div class="combat-vs">
+          <div class="cvs-side"><div class="cvs-row"><span class="cvs-name">solrim</span><span class="cvs-info">ⓘ</span><span class="cvs-lvl">Lv.&nbsp;11</span></div>
+            <div class="cvs-bar"><div class="cvs-bar__hp" style="width:96%"><b>945 / 980</b></div></div>
+            <div class="cvs-bar"><div class="cvs-bar__mp" style="width:84%"><b>101 / 120</b></div></div>
+          </div>
+          <div class="cvs-vs">VS</div>
+          <div class="cvs-side cvs-side--r"><div class="cvs-row"><span class="cvs-lvl">Lv.&nbsp;12</span><span class="cvs-info">ⓘ</span><span class="cvs-name">Аргус</span></div>
+            <div class="cvs-bar"><div class="cvs-bar__hp" style="width:78%"><b>895 / 1150</b></div></div>
+            <div class="cvs-bar"><div class="cvs-bar__mp" style="width:64%"><b>89 / 140</b></div></div>
+          </div>
+        </div>
+
+        <div class="fighters">
+          <div class="gear-col gear-col--l">
+            <div class="gear-slot gear-slot--w"><span>🗡</span></div>
+            <div class="gear-slot gear-slot--w"><span>⚒</span></div>
+            <div class="gear-slot gear-slot--w"><span>🛡</span></div>
+            <div class="gear-slot gear-slot--w"><span>👢</span></div>
+          </div>
+          <div class="fighter-card fighter-card--l"><div class="fc-art fc-art--woman"><img src="assets/warrior.svg" alt="solrim"/></div></div>
+          <div class="fighter-card fighter-card--r"><div class="fc-art fc-art--knight"><img src="assets/knight.svg" alt="Аргус"/></div></div>
+          <div class="gear-col gear-col--r">
+            <div class="gear-slot gear-slot--a"><span>🦺</span></div>
+            <div class="gear-slot gear-slot--a"><span>🧥</span></div>
+            <div class="gear-slot gear-slot--a"><span>🪖</span></div>
+            <div class="gear-slot gear-slot--a"><span>👢</span></div>
+          </div>
+        </div>
+
+        <div class="combat-state combat-state--wait">
+          ⊰<span> Ожидание хода соперника </span>⊱
+        </div>
+
+        <button class="btn btn--block btn--disabled">Удар</button>
+
+        <div class="zone-pad zone-pad--disabled">
+          <div class="zone-pad__title">Удар</div>
+          <div class="zone-row">
+            <button class="zone-btn"><div class="zone-btn__ic">⌒</div><div class="zone-btn__n">Голова</div></button>
+            <button class="zone-btn"><div class="zone-btn__ic">▮</div><div class="zone-btn__n">Корпус</div></button>
+            <button class="zone-btn"><div class="zone-btn__ic">⫯</div><div class="zone-btn__n">Ноги</div></button>
+          </div>
+          <div class="zone-pad__title">Блок</div>
+          <div class="zone-row">
+            <button class="zone-btn"><div class="zone-btn__ic">⌒</div><div class="zone-btn__n">Голова</div></button>
+            <button class="zone-btn"><div class="zone-btn__ic">▮</div><div class="zone-btn__n">Корпус</div></button>
+            <button class="zone-btn"><div class="zone-btn__ic">⫯</div><div class="zone-btn__n">Ноги</div></button>
+          </div>
+        </div>
+
+        <div class="log-tabs">
+          <button class="log-tab log-tab--on">Лог боя</button>
+          <button class="log-tab" data-go="combat-chat">Чат</button>
+        </div>
+        <div class="log-body">
+          <div class="log-line"><span class="lt">18:59</span><span><b class="me">solrim</b> отправил ход. Ожидание соперника...</span></div>
+        </div>
+      </div>
+
+      <div class="home-bar"></div>
+    </section>
+
+    <!-- ============================== SCENE: COMBAT — МОДАЛ КАРТОЧКИ СОПЕРНИКА ============================== -->
+    <section class="screen scene" data-scene="combat-modal">
+      <div class="status-bar"><span>9:41</span><span class="sb-i">●●● ▮▮▮ 100%</span></div>
+      <div class="browser-bar"><span class="bb-l">AA</span><span class="bb-c">🔒 bk.softmg.tech</span><span class="bb-r">↻</span></div>
+
+      <!-- behind layer: combat (dimmed) -->
+      <div class="bk-frame bk-frame--dim">
+        <div class="combat-bar">
+          <button class="bk-back">‹</button>
+          <div class="combat-bar__t"><div class="combat-bar__title">⊰ Бой ⊱</div><div class="combat-bar__sub">МСК 18:59</div></div>
+          <button class="bk-back" style="visibility:hidden">‹</button>
+        </div>
+        <div class="combat-vs">
+          <div class="cvs-side"><div class="cvs-row"><span class="cvs-name">solrim</span><span class="cvs-info">ⓘ</span><span class="cvs-lvl">Lv.&nbsp;11</span></div>
+            <div class="cvs-bar"><div class="cvs-bar__hp" style="width:100%"><b>980 / 980</b></div></div>
+            <div class="cvs-bar"><div class="cvs-bar__mp" style="width:100%"><b>120 / 120</b></div></div>
+          </div>
+          <div class="cvs-vs">VS</div>
+          <div class="cvs-side cvs-side--r"><div class="cvs-row"><span class="cvs-lvl">Lv.&nbsp;12</span><span class="cvs-info">ⓘ</span><span class="cvs-name">Аргус</span></div>
+            <div class="cvs-bar"><div class="cvs-bar__hp" style="width:100%"><b>1150 / 1150</b></div></div>
+            <div class="cvs-bar"><div class="cvs-bar__mp" style="width:100%"><b>140 / 140</b></div></div>
+          </div>
+        </div>
+        <div class="fighters">
+          <div class="gear-col gear-col--l"><div class="gear-slot gear-slot--w"><span>🗡</span></div><div class="gear-slot gear-slot--w"><span>⚒</span></div><div class="gear-slot gear-slot--w"><span>🛡</span></div><div class="gear-slot gear-slot--w"><span>👢</span></div></div>
+          <div class="fighter-card fighter-card--l"><div class="fc-art fc-art--woman"><img src="assets/warrior.svg" alt="solrim"/></div></div>
+          <div class="fighter-card fighter-card--r"><div class="fc-art fc-art--knight"><img src="assets/knight.svg" alt="Аргус"/></div></div>
+          <div class="gear-col gear-col--r"><div class="gear-slot gear-slot--a"><span>🦺</span></div><div class="gear-slot gear-slot--a"><span>🧥</span></div><div class="gear-slot gear-slot--a"><span>🪖</span></div><div class="gear-slot gear-slot--a"><span>👢</span></div></div>
+        </div>
+      </div>
+
+      <!-- modal overlay -->
+      <div class="modal-dim" data-go="combat-turn"></div>
+      <div class="modal">
+        <div class="modal-head">
+          <div class="modal-title">⊰ Персонаж ⊱</div>
+          <button class="modal-close" data-go="combat-turn">✕</button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-grid">
+            <div class="char-portrait">
+              <img class="char-portrait__img" src="assets/portrait-knight.svg" alt="Аргус"/>
+            </div>
+            <div class="modal-right">
+              <div class="modal-name-row">
+                <span class="modal-name">Аргус</span>
+                <span class="modal-lvl">Lv.&nbsp;8</span>
+              </div>
+              <ul class="modal-stats">
+                <li><span class="ms-i">♥</span><span class="ms-l">Здоровье:</span><span class="ms-v">+120</span></li>
+                <li><span class="ms-i">🛡</span><span class="ms-l">Броня:</span><span class="ms-v">+120</span></li>
+                <li><span class="ms-i">⚔</span><span class="ms-l">Уровень атаки:</span><span class="ms-v">+120</span></li>
+                <li><span class="ms-i">🪖</span><span class="ms-l">Тип врага:</span><span class="ms-v">стражник</span></li>
+                <li><span class="ms-i">♕</span><span class="ms-l">Клан:</span><span class="ms-v">Орден Рассвета</span></li>
+                <li><span class="ms-i status-on">●</span><span class="ms-l">Статус:</span><span class="ms-v ms-v--ok">доступен</span></li>
+              </ul>
+              <button class="modal-link" data-go="anketa">👁 Осмотреть анкету</button>
+            </div>
+          </div>
+
+          <div class="modal-bonus">
+            <div class="modal-bonus__t">⊰ Бонус за победу ⊱</div>
+            <ul class="modal-bonus__list">
+              <li><span class="mb-i mb-i--xp">XP</span><b>+120</b> опыта</li>
+              <li><span class="mb-i mb-i--coin">¤</span><b>+35</b> кредитов</li>
+              <li><span class="mb-i mb-i--star">★</span><b>+1</b> к рейтингу</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="home-bar"></div>
+    </section>
+
+    <!-- ============================== SCENE: АНКЕТА ============================== -->
+    <section class="screen scene" data-scene="anketa">
+      <div class="status-bar"><span>9:41</span><span class="sb-i">●●● ▮▮▮ 100%</span></div>
+      <div class="browser-bar"><span class="bb-l">AA</span><span class="bb-c">🔒 bk.softmg.tech</span><span class="bb-r">↻</span></div>
+
+      <div class="bk-frame">
+        <div class="combat-bar">
+          <button class="bk-back" data-go="combat-modal">‹</button>
+          <div class="combat-bar__t">
+            <div class="combat-bar__title">⊰ Персонаж ⊱</div>
+          </div>
+          <button class="bk-back" style="visibility:hidden">‹</button>
+        </div>
+
+        <div class="bk-tabs-row">
+          <button class="bk-tabs-row__btn bk-tabs-row__btn--on">Основное</button>
+          <button class="bk-tabs-row__btn">Характеристики</button>
+          <button class="bk-tabs-row__btn">Анкета</button>
+          <button class="bk-tabs-row__btn">Бои</button>
+        </div>
+
+        <div class="anketa-grid">
+          <div class="char-portrait char-portrait--big">
+            <img class="char-portrait__img" src="assets/portrait-knight.svg" alt="Аргус"/>
+            <div class="char-portrait__banner"></div>
+          </div>
+          <div class="anketa-right">
+            <div class="modal-name-row">
+              <span class="modal-name">Аргус</span>
+              <span class="modal-lvl">Lv.&nbsp;8</span>
+            </div>
+            <ul class="modal-stats">
+              <li><span class="ms-i">♥</span><span class="ms-l">Здоровье:</span><span class="ms-v">+120</span></li>
+              <li><span class="ms-i">🛡</span><span class="ms-l">Броня:</span><span class="ms-v">+120</span></li>
+              <li><span class="ms-i">⚔</span><span class="ms-l">Уровень атаки:</span><span class="ms-v">+120</span></li>
+              <li><span class="ms-i">🪖</span><span class="ms-l">Тип врага:</span><span class="ms-v">стражник</span></li>
+              <li><span class="ms-i">♕</span><span class="ms-l">Клан:</span><span class="ms-v">Орден Рассвета</span></li>
+              <li><span class="ms-i status-on">●</span><span class="ms-l">Статус:</span><span class="ms-v ms-v--ok">доступен</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="bk-section">
+          <div class="bk-section__t bk-section__t--ornate">⊰ Основные сведения ⊱</div>
+          <div class="anketa-info">
+            <ul>
+              <li><span class="ai-i">🏆</span> Побед: <b>37</b></li>
+              <li><span class="ai-i">🛡</span> Поражений: <b>12</b></li>
+              <li><span class="ai-i">★</span> Рейтинг: <b>1481</b></li>
+            </ul>
+            <ul>
+              <li><span class="ai-i">☀</span> Склонность: <b>Свет</b></li>
+              <li><span class="ai-i">📍</span> Локация:<br/><b>Центральная площадь</b></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="bk-section">
+          <div class="bk-section__t bk-section__t--ornate">⊰ Бонус за победу ⊱</div>
+          <ul class="modal-bonus__list anketa-bonus">
+            <li><span class="mb-i mb-i--xp">XP</span><b>+120</b> опыта</li>
+            <li><span class="mb-i mb-i--coin">¤</span><b>+35</b> кредитов</li>
+            <li><span class="mb-i mb-i--star">★</span><b>+1</b> к рейтингу</li>
+          </ul>
+        </div>
+      </div>
+      <div class="home-bar"></div>
+    </section>
+
+    <!-- ============================== SCENE: COMBAT — ЧАТ ============================== -->
+    <section class="screen scene" data-scene="combat-chat">
+      <div class="status-bar"><span>9:41</span><span class="sb-i">●●● ▮▮▮ 100%</span></div>
+      <div class="browser-bar"><span class="bb-l">AA</span><span class="bb-c">🔒 bk.softmg.tech</span><span class="bb-r">↻</span></div>
+
+      <div class="bk-frame">
+        <div class="combat-bar">
+          <button class="bk-back" data-go="combat-turn">‹</button>
+          <div class="combat-bar__t"><div class="combat-bar__title">⊰ Сообщения ⊱</div><div class="combat-bar__sub">Аргус · онлайн</div></div>
+          <button class="bk-back" style="visibility:hidden">‹</button>
+        </div>
+
+        <div class="chat-body chat-body--bk">
+          <div class="cmsg cmsg--in"><b class="foe">Аргус:</b> Привет! Ты мне ништяк зашёл</div>
+          <div class="cmsg cmsg--out"><b class="me">Вы:</b> Привет! Да, и тоже не ожидал клинка</div>
+          <div class="cmsg cmsg--in"><b class="foe">Аргус:</b> Орден Рассвета набирает бойцов</div>
+          <div class="cmsg cmsg--in"><b class="foe">Аргус:</b> У нас тренировки каждый день</div>
+          <div class="cmsg cmsg--out"><b class="me">Вы:</b> Звучит интересно. Какие требования?</div>
+          <div class="cmsg cmsg--in"><b class="foe">Аргус:</b> 15+ ур, активность, плюсы в командной игре. Минимум 5 боёв в неделю</div>
+          <div class="cmsg cmsg--out"><b class="me">Вы:</b> У меня 17. Как вступить?</div>
+          <div class="cmsg cmsg--in"><b class="foe">Аргус:</b> Приходи к нам в ставку Ордена</div>
+          <div class="cmsg cmsg--out"><b class="me">Вы:</b> Хорошо, буду через пару минут</div>
+        </div>
+
+        <div class="chat-input">
+          <input placeholder="Введите сообщение..."/>
+          <button class="btn btn--red btn--mini">▲</button>
+        </div>
+
+        <div class="log-tabs">
+          <button class="log-tab" data-go="combat-turn">Лог боя</button>
+          <button class="log-tab log-tab--on">Чат</button>
+        </div>
+      </div>
+
+      <div class="home-bar"></div>
+    </section>
+
+    <!-- ============================== SCENE: ПОБЕДА ============================== -->
+    <section class="screen scene" data-scene="victory">
+      <div class="status-bar"><span>9:41</span><span class="sb-i">●●● ▮▮▮ 100%</span></div>
+      <div class="browser-bar"><span class="bb-l">AA</span><span class="bb-c">🔒 bk.softmg.tech</span><span class="bb-r">↻</span></div>
+
+      <div class="bk-frame">
+        <div class="combat-bar">
+          <button class="bk-back" data-go="ploschad">‹</button>
+          <div class="combat-bar__t"><div class="combat-bar__title">⊰ Конец боя ⊱</div></div>
+          <button class="bk-back" style="visibility:hidden">‹</button>
+        </div>
+
+        <div class="combat-vs">
+          <div class="cvs-side"><div class="cvs-row"><span class="cvs-name">solrim</span><span class="cvs-lvl">Lv.&nbsp;11</span></div>
+            <div class="cvs-bar"><div class="cvs-bar__hp" style="width:32%"><b>312 / 980</b></div></div>
+          </div>
+          <div class="cvs-vs">VS</div>
+          <div class="cvs-side cvs-side--r"><div class="cvs-row"><span class="cvs-lvl">Lv.&nbsp;12</span><span class="cvs-name">Аргус</span></div>
+            <div class="cvs-bar"><div class="cvs-bar__hp" style="width:0"><b>0 / 1150</b></div></div>
+          </div>
+        </div>
+
+        <div class="fighters fighters--short">
+          <div class="fighter-card fighter-card--l"><div class="fc-art fc-art--woman"><img src="assets/warrior.svg" alt="solrim"/></div></div>
+          <div class="fighter-card fighter-card--r fighter-card--dead"><div class="fc-art"><div class="fc-art__bg"></div><div class="fc-art__char">💀</div></div></div>
+        </div>
+
+        <div class="stamp stamp--win">⊰ ПОБЕДА! ⊱</div>
+
+        <div class="bk-section">
+          <div class="bk-section__t bk-section__t--ornate">⊰ Награда ⊱</div>
+          <ul class="modal-bonus__list anketa-bonus">
+            <li><span class="mb-i mb-i--xp">XP</span><b>+120</b> опыта</li>
+            <li><span class="mb-i mb-i--coin">¤</span><b>+35</b> кредитов</li>
+            <li><span class="mb-i mb-i--star">★</span><b>+12</b> к рейтингу</li>
+            <li><span class="mb-i mb-i--drop">🗡</span><b>Клинок Рассвета</b> · редкий</li>
+          </ul>
+        </div>
+
+        <div class="end-actions">
+          <button class="btn btn--ghost-light" data-go="ploschad">Выйти</button>
+          <button class="btn btn--red" data-go="combat-turn">Повторить</button>
+        </div>
+      </div>
+
+      <div class="home-bar"></div>
+    </section>
+
+    <!-- ============================== SCENE: ПОРАЖЕНИЕ ============================== -->
+    <section class="screen scene" data-scene="defeat">
+      <div class="status-bar"><span>9:41</span><span class="sb-i">●●● ▮▮▮ 100%</span></div>
+      <div class="browser-bar"><span class="bb-l">AA</span><span class="bb-c">🔒 bk.softmg.tech</span><span class="bb-r">↻</span></div>
+
+      <div class="bk-frame">
+        <div class="combat-bar">
+          <button class="bk-back" data-go="ploschad">‹</button>
+          <div class="combat-bar__t"><div class="combat-bar__title">⊰ Конец боя ⊱</div></div>
+          <button class="bk-back" style="visibility:hidden">‹</button>
+        </div>
+
+        <div class="combat-vs">
+          <div class="cvs-side"><div class="cvs-row"><span class="cvs-name">solrim</span><span class="cvs-lvl">Lv.&nbsp;11</span></div>
+            <div class="cvs-bar"><div class="cvs-bar__hp" style="width:0"><b>0 / 980</b></div></div>
+          </div>
+          <div class="cvs-vs">VS</div>
+          <div class="cvs-side cvs-side--r"><div class="cvs-row"><span class="cvs-lvl">Lv.&nbsp;12</span><span class="cvs-name">Аргус</span></div>
+            <div class="cvs-bar"><div class="cvs-bar__hp" style="width:18%"><b>207 / 1150</b></div></div>
+          </div>
+        </div>
+
+        <div class="fighters fighters--short">
+          <div class="fighter-card fighter-card--l fighter-card--dead"><div class="fc-art"><div class="fc-art__bg"></div><div class="fc-art__char">💀</div></div></div>
+          <div class="fighter-card fighter-card--r"><div class="fc-art fc-art--knight"><img src="assets/knight.svg" alt="Аргус"/></div></div>
+        </div>
+
+        <div class="stamp stamp--lose">⊰ ПОРАЖЕНИЕ ⊱</div>
+
+        <div class="bk-section">
+          <div class="bk-section__t bk-section__t--ornate">⊰ Итоги ⊱</div>
+          <ul class="modal-bonus__list anketa-bonus">
+            <li><span class="mb-i mb-i--xp">XP</span><b>+8</b> опыта</li>
+            <li><span class="mb-i mb-i--star">★</span><b>−14</b> к рейтингу</li>
+          </ul>
+          <div class="end-hint">Рекомендуем сменить тактику на «Танк» — у соперника тип «стражник»</div>
+        </div>
+
+        <div class="end-actions">
+          <button class="btn btn--ghost-light" data-go="ploschad">Выйти</button>
+          <button class="btn btn--red" data-go="combat-turn">Реванш</button>
+        </div>
+      </div>
+
+      <div class="home-bar"></div>
+    </section>
+
+    <!-- ============================== SCENE: ИНВЕНТАРЬ ============================== -->
+    <section class="screen scene" data-scene="inventory">
+      <div class="status-bar"><span>9:41</span><span class="sb-i">●●● ▮▮▮ 100%</span></div>
+      <div class="browser-bar"><span class="bb-l">AA</span><span class="bb-c">🔒 bk.softmg.tech</span><span class="bb-r">↻</span></div>
+
+      <div class="bk-frame">
+        <div class="combat-bar">
+          <button class="bk-back" data-go="ploschad">‹</button>
+          <div class="combat-bar__t"><div class="combat-bar__title">⊰ Инвентарь ⊱</div></div>
+          <button class="bk-back" style="visibility:hidden">‹</button>
+        </div>
+
+        <div class="paperdoll-wrap">
+          <div class="paperdoll-slots paperdoll-slots--l">
+            <div class="pd-slot pd-slot--filled"><span>🪖</span></div>
+            <div class="pd-slot pd-slot--filled"><span>📿</span></div>
+            <div class="pd-slot pd-slot--filled"><span>🗡</span></div>
+            <div class="pd-slot"><span>○</span></div>
+          </div>
+          <div class="paperdoll-center">
+            <div class="pd-portrait">
+              <div class="pd-portrait__bg"></div>
+              <div class="pd-portrait__char">🧝</div>
+            </div>
+            <div class="pd-stats">
+              <div><b>Сила</b> 42</div>
+              <div><b>Ловк.</b> 31</div>
+              <div><b>Инт.</b> 28</div>
+              <div><b>Удача</b> 17</div>
+            </div>
+          </div>
+          <div class="paperdoll-slots paperdoll-slots--r">
+            <div class="pd-slot pd-slot--filled"><span>🦺</span></div>
+            <div class="pd-slot pd-slot--filled"><span>🛡</span></div>
+            <div class="pd-slot pd-slot--filled"><span>👢</span></div>
+            <div class="pd-slot"><span>○</span></div>
+          </div>
+        </div>
+
+        <div class="bk-tabs-row">
+          <button class="bk-tabs-row__btn bk-tabs-row__btn--on">Всё</button>
+          <button class="bk-tabs-row__btn">Оружие</button>
+          <button class="bk-tabs-row__btn">Броня</button>
+          <button class="bk-tabs-row__btn" data-go="elixirs">Эликсиры</button>
+        </div>
+
+        <div class="inv-grid">
+          <div class="inv-cell inv-cell--rare"><span>🗡</span><em>×1</em></div>
+          <div class="inv-cell inv-cell--epic"><span>⚔</span><em>×1</em></div>
+          <div class="inv-cell"><span>🛡</span><em>×1</em></div>
+          <div class="inv-cell inv-cell--rare"><span>🪖</span><em>×2</em></div>
+          <div class="inv-cell"><span>🦺</span><em>×1</em></div>
+          <div class="inv-cell"><span>👢</span><em>×1</em></div>
+          <div class="inv-cell inv-cell--elixir" data-go="elixirs"><span>⚗</span><em>×7</em></div>
+          <div class="inv-cell inv-cell--elixir" data-go="elixirs"><span>⚗</span><em>×3</em></div>
+          <div class="inv-cell inv-cell--scroll"><span>📜</span><em>×2</em></div>
+          <div class="inv-cell"><span>🤜</span><em>×1</em></div>
+          <div class="inv-cell"><span>○</span><em>×3</em></div>
+          <div class="inv-cell inv-cell--empty"></div>
+        </div>
+      </div>
+
+      <div class="home-bar"></div>
+    </section>
+
+    <!-- ============================== SCENE: ЭЛИКСИРЫ ============================== -->
+    <section class="screen scene" data-scene="elixirs">
+      <div class="status-bar"><span>9:41</span><span class="sb-i">●●● ▮▮▮ 100%</span></div>
+      <div class="browser-bar"><span class="bb-l">AA</span><span class="bb-c">🔒 bk.softmg.tech</span><span class="bb-r">↻</span></div>
+
+      <div class="bk-frame bk-frame--dim">
+        <div class="combat-bar">
+          <button class="bk-back" data-go="inventory">‹</button>
+          <div class="combat-bar__t"><div class="combat-bar__title">⊰ Инвентарь ⊱</div></div>
+          <button class="bk-back" style="visibility:hidden">‹</button>
+        </div>
+        <div class="inv-grid">
+          <div class="inv-cell inv-cell--rare"><span>🗡</span></div>
+          <div class="inv-cell inv-cell--epic"><span>⚔</span></div>
+          <div class="inv-cell"><span>🛡</span></div>
+          <div class="inv-cell inv-cell--elixir"><span>⚗</span></div>
+        </div>
+      </div>
+
+      <div class="modal-dim" data-go="inventory"></div>
+      <div class="sheet">
+        <div class="sheet__grab"></div>
+        <div class="sheet__title">⊰ Эликсиры ⊱</div>
+        <div class="sheet__sub">Долгое нажатие — описание · одиночный тап — применить</div>
+
+        <div class="elixir-row">
+          <div class="elixir-ic elixir-ic--red">⚗</div>
+          <div class="elixir-info">
+            <div class="elixir-n">Алое зелье <span class="bk-badge bk-badge--rare">редкий</span></div>
+            <div class="elixir-d">+120 HP мгновенно · откат 30с</div>
+          </div>
+          <div class="elixir-count">×7</div>
+        </div>
+        <div class="elixir-row">
+          <div class="elixir-ic elixir-ic--blue">⚗</div>
+          <div class="elixir-info">
+            <div class="elixir-n">Лазурное зелье</div>
+            <div class="elixir-d">+80 MP · 10с</div>
+          </div>
+          <div class="elixir-count">×3</div>
+        </div>
+        <div class="elixir-row">
+          <div class="elixir-ic elixir-ic--green">⚗</div>
+          <div class="elixir-info">
+            <div class="elixir-n">Зелёный отвар <span class="bk-badge bk-badge--epic">эпик</span></div>
+            <div class="elixir-d">+15% к урону, 3 хода</div>
+          </div>
+          <div class="elixir-count">×1</div>
+        </div>
+        <div class="elixir-row">
+          <div class="elixir-ic elixir-ic--gray">⚗</div>
+          <div class="elixir-info">
+            <div class="elixir-n">Стальной щит</div>
+            <div class="elixir-d">+20% к защите, 2 хода</div>
+          </div>
+          <div class="elixir-count">×2</div>
+        </div>
+
+        <div class="end-actions">
+          <button class="btn btn--ghost-light" data-go="inventory">Закрыть</button>
+          <button class="btn btn--red">Применить</button>
+        </div>
+      </div>
+
+      <div class="home-bar"></div>
+    </section>
+
+  </div>
+
+  <div class="phone-foot">
+    <button class="phone-foot__btn" id="back">‹ Назад</button>
+    <button class="phone-foot__btn" id="forward">Вперёд ›</button>
+  </div>
+</main>
+
+<script>
+const scenes = Array.from(document.querySelectorAll('.scene'));
+const sceneByName = name => scenes.find(s => s.dataset.scene === name);
+let history = ['splash'];
+
+function goTo(name, push = true){
+  const s = sceneByName(name);
+  if (!s) return;
+  scenes.forEach(x => x.classList.remove('scene--active'));
+  s.classList.add('scene--active');
+  s.scrollTop = 0;
+  if (push) history.push(name);
+  // highlight side-nav
+  document.querySelectorAll('.stage-nav button').forEach(b => {
+    b.classList.toggle('stage-nav__on', b.dataset.go === name);
+  });
+}
+
+// Tap delegation for any [data-go]
+document.body.addEventListener('click', e => {
+  const t = e.target.closest('[data-go]');
+  if (!t) return;
+  e.preventDefault();
+  goTo(t.dataset.go);
+});
+
+// Zone toggle inside combat
+document.body.addEventListener('click', e => {
+  const z = e.target.closest('.zone-btn');
+  if (!z || z.closest('.zone-pad--disabled')) return;
+  const row = z.parentElement;
+  row.querySelectorAll('.zone-btn').forEach(b => b.classList.remove('zone-btn--on'));
+  z.classList.add('zone-btn--on');
+});
+
+// Back / Forward in side-nav
+document.getElementById('back').addEventListener('click', () => {
+  if (history.length > 1) { history.pop(); goTo(history[history.length-1], false); }
+});
+document.getElementById('forward').addEventListener('click', () => {
+  // Demo flow forward: ploschad -> combat -> wait -> victory
+  const flow = ['splash','ploschad','combat-turn','combat-wait','victory','ploschad'];
+  const cur = history[history.length-1];
+  const idx = flow.indexOf(cur);
+  const next = idx >= 0 && idx < flow.length-1 ? flow[idx+1] : 'ploschad';
+  goTo(next);
+});
+
+// Auto-advance from wait to victory after a beat
+let waitTimer;
+const obs = new MutationObserver(() => {
+  const wait = sceneByName('combat-wait');
+  if (wait.classList.contains('scene--active')) {
+    clearTimeout(waitTimer);
+    waitTimer = setTimeout(() => goTo('victory'), 2200);
+  } else {
+    clearTimeout(waitTimer);
+  }
+});
+obs.observe(document.body, { subtree: true, attributes: true, attributeFilter: ['class'] });
+
+goTo('splash', false);
+</script>
+</body>
+</html>
